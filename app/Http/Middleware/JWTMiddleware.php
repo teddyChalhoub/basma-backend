@@ -26,7 +26,7 @@ class JWTMiddleware extends BaseMiddleware
 
             return response()->json([
                 'success' => false,
-                'message' => 'User must be logged in',
+                'message' => 'You must be logged in',
             ],401);
         }
         return $next($request);

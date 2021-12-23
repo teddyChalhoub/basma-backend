@@ -26,5 +26,6 @@ Route::group(['prefix'=>'admin'],function (){
         Route::apiResource('/user',UserController::class);
         Route::post('/filterUserData',[UserController::class,"filterUserData"]);
         Route::post('/averageUserRegisterPerDate',[UserController::class,"averageUserRegisterPerDate"]);
+        Route::get('/getTotalUserCount',[UserController::class,"getTotalUserCount"]);
     });
 });

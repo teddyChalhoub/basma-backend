@@ -119,13 +119,29 @@ class UserController extends Controller
         $average_registered = ($users_nb_per_date/$users_nb)*100;
 
         return response()->json([
-            "success"=>"Average of student registered in percentage",
+            "success"=>true,
+            "message"=>"Average of student registered in percentage",
             "average_registered"=>$average_registered,
             "total_users"=>$users_nb
         ]);
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getTotalUserCount()
+    {
+        $users_nb = $this->userRepository->allUserCount();
+
+        return response()->json([
+            "success"=>true,
+            "message"=>"Successfully retrieved registered students",
+            "total_users"=>$users_nb
+        ]);
+
+    }
 
     /**
      * Store a newly created resource in storage.
