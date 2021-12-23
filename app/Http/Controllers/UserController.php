@@ -115,8 +115,12 @@ class UserController extends Controller
         $start_date = Carbon::parse($request['start_date']);
         $end_date = Carbon::parse($request['end_date']);
 
-        $users_nb_per_date = $this->userRepository->fetchUserPerDate($start_date,$end_date);
-        $average_registered = ($users_nb_per_date/$users_nb)*100;
+        if ($users_nb !== 0) {
+            $users_nb_per_date = $this->userRepository->fetchUserPerDate($start_date, $end_date);
+            $average_registered = ($users_nb_per_date / $users_nb) * 100;
+        } else {
+            $average_registered = 0;
+        }
 
         return response()->json([
             "success"=>true,
